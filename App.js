@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+
+import { useFonts } from "expo-font";
+
+import AuthNavigator from "./app/navigations/AuthNavigation";
+import AppNavigator from "./app/navigations/AppNavigator";
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    EncodeSansBold: require("./assets/fonts/Urbanist-Bold.ttf"),
+    EncodeSansBoldItalic: require("./assets/fonts/Urbanist-BoldItalic.ttf"),
+    EncodeSansSemiBold: require("./assets/fonts/Urbanist-SemiBold.ttf"),
+    EncodeSansSemiBoldItalic: require("./assets/fonts/Urbanist-SemiBoldItalic.ttf"),
+    EncodeSansMedium: require("./assets/fonts/Urbanist-Medium.ttf"),
+    EncodeSansMediumItalic: require("./assets/fonts/Urbanist-MediumItalic.ttf"),
+    EncodeSansRegular: require("./assets/fonts/Urbanist-Regular.ttf"),
+    EncodeSansRegularItalic: require("./assets/fonts/Urbanist-Italic.ttf"),
+    EncodeSansLight: require("./assets/fonts/Urbanist-Light.ttf"),
+    EncodeSansLightItalic: require("./assets/fonts/Urbanist-LightItalic.ttf"),
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
