@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Image } from "expo-image";
 import GlobalStyles from "../constants/GlobalStyles";
@@ -8,9 +8,10 @@ const ChatComponent = ({
   image = require("../../assets/images/woman.png"),
   name = "Maria",
   lastMessage = "Hello, how are you?",
+  onPress,
 }) => {
   return (
-    <View style={styles.mainContainer}>
+    <TouchableOpacity onPress={onPress} style={styles.mainContainer}>
       <View style={[GlobalStyles.horizontal, { gap: 15 }]}>
         <Image
           contentFit="cover"
@@ -18,27 +19,14 @@ const ChatComponent = ({
           source={image}
         />
         <View style={styles.names}>
-          <Text
-            style={{
-              fontFamily: FONTS.bold,
-              color: COLORS.font,
-              marginBottom: 5,
-            }}
-          >
-            {name}
-          </Text>
-          <Text
-            style={{
-              fontSize: 12,
-              color: COLORS.grey,
-              fontFamily: FONTS.light,
-            }}
-          >
-            {lastMessage}
-          </Text>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.lastMessage}>{lastMessage}</Text>
         </View>
       </View>
-    </View>
+      <View>
+        <Text style={styles.time}>10:00 AM</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -53,5 +41,20 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 12,
     backgroundColor: COLORS.white,
+    justifyContent: "space-between",
+  },
+  name: {
+    fontFamily: FONTS.bold,
+    color: COLORS.font,
+    marginBottom: 5,
+    fontSize: 16,
+  },
+  lastMessage: {
+    fontFamily: FONTS.regular,
+    color: COLORS.grey,
+  },
+  time: {
+    color: COLORS.grey,
+    fontSize: 12,
   },
 });

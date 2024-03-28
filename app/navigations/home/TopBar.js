@@ -20,7 +20,7 @@ const TopBar = () => {
         },
       }}
     >
-      <Tab.Screen name="Chats" component={Chats} />
+      <Tab.Screen name="Chat" component={Chats} />
       <Tab.Screen name="Calls" component={Calls} />
     </Tab.Navigator>
   );

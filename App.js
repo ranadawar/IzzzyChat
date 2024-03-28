@@ -1,9 +1,10 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 
 import { useFonts } from "expo-font";
 
 import AuthNavigator from "./app/navigations/AuthNavigation";
 import AppNavigator from "./app/navigations/AppNavigator";
+import { COLORS } from "./app/constants/theme";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,9 +22,18 @@ export default function App() {
 
   if (!fontsLoaded) return null;
 
+  const theme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: COLORS.white,
+    },
+  };
+
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <AppNavigator />
+      {/* <AuthNavigator /> */}
     </NavigationContainer>
   );
 }

@@ -1,6 +1,7 @@
 export const COLORS = {
   primary: "#246BFD",
   secondary: "#5089FF",
+  lightPrimary: "#E1F5FE",
   lightBg: "#f3fefe",
   darkIcon: "#262626",
   font: "#212121",
@@ -13,6 +14,7 @@ export const COLORS = {
   fontDark: "#171725",
   textInputBackround: "#F6F6F6",
   textInputPlaceholder: "#9CA4AB",
+  bgCom: "#FAFAFA",
 };
 
 export const SIZES = {

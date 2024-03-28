@@ -7,6 +7,15 @@ import Moments from "../screens/Moments";
 import Wallet from "../screens/Wallet";
 import Settings from "../screens/Settings";
 import { Image } from "expo-image";
+import TabBarIcon from "../components/TabBarIcon";
+
+import home from "../../assets/icons/homes.svg";
+import HomeIcon from "../../assets/svgs/HomeIcon";
+import { COLORS } from "../constants/theme";
+import MomentIcon from "../../assets/svgs/MomentIcon";
+
+import SVGUri from "react-native-svg";
+import HomeStack from "./home/HomeStack";
 
 const Tab = createBottomTabNavigator();
 const AppNavigator = () => {
@@ -14,22 +23,61 @@ const AppNavigator = () => {
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name="Chats"
-        component={HomeScreen}
+        component={HomeStack}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View style={{ alignItems: "center", justifyContent: "center" }}>
-              <Image
-                contentFit="contain"
-                style={{ width: 24, height: 24 }}
-                source={require("../../assets/icons/chatc.png")}
-              />
-            </View>
+            <HomeIcon color={focused ? COLORS.primary : COLORS.grey} />
           ),
         }}
       />
-      <Tab.Screen name="Moments" component={Moments} />
-      <Tab.Screen name="Wallet" component={Wallet} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen
+        name="Moments"
+        component={Moments}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require("../../assets/icons/moments.svg")}
+              style={{
+                width: 25,
+                height: 25,
+                tintColor: focused ? COLORS.primary : COLORS.grey,
+              }}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Wallet"
+        component={Wallet}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require("../../assets/icons/wallets.svg")}
+              style={{
+                width: 25,
+                height: 25,
+                tintColor: focused ? COLORS.primary : COLORS.grey,
+              }}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require("../../assets/icons/Setting.svg")}
+              style={{
+                width: 25,
+                height: 25,
+                tintColor: focused ? COLORS.primary : COLORS.grey,
+              }}
+            />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
